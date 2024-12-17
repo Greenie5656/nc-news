@@ -7,6 +7,7 @@ import Header from './components/Header'
 import ArticleList from './components/ArticleList'
 import Topics from "./components/Topics"
 import Footer from "./components/Footer"
+import SingleArticle from './components/SingleArticle'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Routes>
       <Route path="/" element={<ArticleList />} />
       <Route path="/topics/:topic" element={<ArticleList />} />
+      <Route path="/articles/:article_id" element={<SingleArticle />} />
     </Routes>
     <Footer />
   </div>

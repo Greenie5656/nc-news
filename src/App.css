@@ -61,11 +61,44 @@
   border: 1px solid #ddd;
   padding: 15px;
   list-style: none;
+  cursor: pointer;
 }
 
 .article-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.single-article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.article-full-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.article-info {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.article-body {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.article-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
