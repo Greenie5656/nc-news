@@ -60,7 +60,7 @@ const SingleArticle = () => {
             </article>
 
             <div>
-                <h2>Comments sectioon</h2>
+                <h2>Comments section</h2>
                 <Comments article_id={article_id} />
             </div>
 

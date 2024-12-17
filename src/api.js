@@ -29,5 +29,13 @@ const updateArticleVotes = (article_id, increment) => {
     });
 };
 
+const postComment = (article_id, commentData) => {
+    return api.post(`/articles/${article_id}/comments`, commentData)
+    .then(({ data }) => {
+        return data.comment;
+    });
+};
 
-export { getArticles, getArticleById, getArticleComments, updateArticleVotes };
+
+
+export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment };
