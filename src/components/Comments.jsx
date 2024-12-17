@@ -1,5 +1,7 @@
 import{ useState, useEffect } from "react";
 import { getArticleComments } from "../api";
+import CommentForm from "./CommentForm";
+
 
 const Comments = ({ article_id }) => {
     const [comments, setComments] = useState([]);
@@ -15,10 +17,18 @@ const Comments = ({ article_id }) => {
         });
     }, [article_id]);
 
+    const handleNewComment = (newComment) => {
+        setComments((currentComments) => [newComment, ...currentComments])
+    }
+
     if (isLoading) return <p>Loading comments...</p>;
 
     return (
         <section className="comments-section">
+            <CommentForm
+            article_id={article_id} 
+            onCommentPosted={handleNewComment}
+            />
             <h3>Comments ({ comments.length })</h3>
             {comments.length === 0 ? (
                 <p>No Comments Yet!</p>
