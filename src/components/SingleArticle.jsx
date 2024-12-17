@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
     const [article, setArticle] = useState(null);
@@ -9,6 +10,7 @@ const SingleArticle = () => {
 
     useEffect(() => {
         setIsLoading(true);
+
         getArticleById(article_id)
         .then((articleData) => {
             setArticle(articleData);
@@ -31,8 +33,12 @@ const SingleArticle = () => {
                     <span>💬 {article.comment_count}</span>
                     <span> 👍 {article.votes}</span>
                 </div>
-
             </article>
+
+            <div>
+                <h2>Comments sectioon</h2>
+                <Comments article_id={article_id} />
+            </div>
 
         </main>
     )

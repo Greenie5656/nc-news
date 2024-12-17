@@ -102,3 +102,33 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.comments-section {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-card {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.comment-body {
+  margin-bottom: 10px;
+}
+
+.comment-info {
+  display: flex;
+  gap: 15px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+
+
