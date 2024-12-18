@@ -1,11 +1,12 @@
 import{ useState, useEffect } from "react";
-import { getArticleComments } from "../api";
+import { getArticleComments, deleteComment } from "../api";
 import CommentForm from "./CommentForm";
 
 
 const Comments = ({ article_id }) => {
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isDeleting, setIsDeleting] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
@@ -19,6 +20,19 @@ const Comments = ({ article_id }) => {
 
     const handleNewComment = (newComment) => {
         setComments((currentComments) => [newComment, ...currentComments])
+    }
+
+    const handleDeleteComment = (comment_id) => {
+        setIsDeleting(comment_id);
+        deleteComment(comment_id)
+        .then(() => {
+            setComments((currentComments) => 
+            currentComments.filter((comment) => comment.comment_id !== comment_id));
+        })
+        .catch((error) => {
+            console.log("Failed to delete commnet", error);
+            setIsDeleting(null);
+        })
     }
 
     if (isLoading) return <p>Loading comments...</p>;
@@ -41,6 +55,11 @@ const Comments = ({ article_id }) => {
                             <div className="comment-info">
                                 <span>By { comment.author }</span>
                                 <span>👍 { comment.votes } </span>
+                                {comment.author === "jessjelly" && (
+                                    <button onClick={() => handleDeleteComment(comment.comment_id)} className="delete-button">
+                                        {isDeleting === comment.comment_id ? "Deleting..." : "'🗑️ Delete'"}
+                                    </button>
+                                )}
                             </div>
                             </li>
                         )

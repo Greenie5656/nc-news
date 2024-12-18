@@ -36,6 +36,10 @@ const postComment = (article_id, commentData) => {
     });
 };
 
+const deleteComment = (comment_id) => {
+    return api.delete(`/comments/${comment_id}`);
+}
 
 
-export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment };
+
+export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment, deleteComment };
