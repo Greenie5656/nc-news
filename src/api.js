@@ -1,4 +1,5 @@
 import axios from "axios";
+import { data } from "react-router-dom";
 
 const api = axios.create({
     baseURL: "https://my-nc-news-7qlo.onrender.com/api"
@@ -40,6 +41,15 @@ const deleteComment = (comment_id) => {
     return api.delete(`/comments/${comment_id}`);
 }
 
+const getSortedArticles = (sort_by, order) => {
+    return api.get(`/articles?sort_by=${sort_by}&order=${order}`)
+    .then(({ data }) => {
+        return data.articles;
+    });
+};
 
 
-export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment, deleteComment };
+
+
+
+export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment, deleteComment, getSortedArticles };

@@ -212,6 +212,24 @@
   border-color: #4CAF50;
 }
 
+.sort-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sort-controls select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sort-controls select:hover {
+  border-color: #4CAF50;
+}
+
 
 
 
