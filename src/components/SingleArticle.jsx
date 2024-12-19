@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getArticleById, updateArticleVotes } from "../api";
 import Comments from "./Comments";
 
@@ -51,6 +51,7 @@ const SingleArticle = () => {
 
     return (
         <main className="single-article">
+            <Link to="/" className="back-link">Back to Articles</Link>
             <article>
                 <img src={article.article_img_url}
                 alt=""
