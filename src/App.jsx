@@ -8,6 +8,7 @@ import ArticleList from './components/ArticleList'
 import Topics from "./components/Topics"
 import Footer from "./components/Footer"
 import SingleArticle from './components/SingleArticle'
+import ErrorPage from './components/ErrorPage'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/" element={<ArticleList />} />
       <Route path="/topics/:topic" element={<ArticleList />} />
       <Route path="/articles/:article_id" element={<SingleArticle />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
     <Footer />
   </div>

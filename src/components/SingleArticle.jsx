@@ -6,14 +6,24 @@ import Comments from "./Comments";
 const SingleArticle = () => {
     const [article, setArticle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { article_id } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
+        setError(null)
 
         getArticleById(article_id)
         .then((articleData) => {
             setArticle(articleData);
+            setIsLoading(false);
+        })
+        .catch((err) => {
+            if (err.response && err.response.status === 404){
+                setError(`Article ${article_id} not found`);
+            } else {
+                setError("Error loading article. Please try again");
+            }
             setIsLoading(false);
         });
     }, [article_id]);
@@ -32,11 +42,12 @@ const SingleArticle = () => {
                 ...currentArticle,
                 votes: currentArticle.votes -1
             }));
-            console.log("Failed to update vote", error)
+            setError("Failed to update vote. Please try again.");
         })
     }
 
     if (isLoading) return <p>Loading article...</p>
+    if (error) return <p className="error-message">{ error }</p>
 
     return (
         <main className="single-article">
@@ -57,6 +68,7 @@ const SingleArticle = () => {
                     </button>
                 
                 </div>
+                {error ? <p className="error-message">{error}</p>: null}
             </article>
 
             <div>
