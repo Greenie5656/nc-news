@@ -1,8 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,15 +15,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f7fa;
   color: #3C4F67;
-  margin: 0;
-  padding: 0;
+  position: relative;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
 .app {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .articles-container {
@@ -316,4 +327,29 @@ body {
 
 .back-link:hover {
   color: #3C4F67;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #617483;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(60, 79, 103, 0.1);
+}
+
+.user-info {
+  font-size: 0.9rem;
+  color: #6E8392;
+  background-color: #f5f7fa;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #B1C9E8;
+}
+
+.user-info strong {
+  color: #4B7287;
 }
