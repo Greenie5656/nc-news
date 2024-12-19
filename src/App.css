@@ -230,6 +230,18 @@
   border-color: #4CAF50;
 }
 
+.error-message {
+  color: red;
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+
 
 
 

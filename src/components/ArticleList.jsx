@@ -10,16 +10,20 @@ const ArticleList = () => {
     const { topic } = useParams();
     const [sortBy, setSortBy] = useState("")
     const [order, setOrder] = useState("desc"); 
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
-
+        setError(null);
             if(!sortBy){
                 
             getArticles()
             .then((articles) => {
                 if (topic){
                     const filteredArticles = articles.filter((article) => article.topic === topic);
+                    if (filteredArticles.length === 0){
+                        setError(`Topic '${topic}' not found `);
+                    }
                     setArticles(filteredArticles)
                 } else {
                 setArticles(articles);
@@ -49,6 +53,7 @@ const ArticleList = () => {
     }, [topic, sortBy, order]);
 
     if (isLoading) return <p>Loading articles...</p>;
+    if (error) return <p className="error-message">{ error }</p>
 
     return (
         <main className="articles-container">
