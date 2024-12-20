@@ -7,6 +7,7 @@ const SingleArticle = () => {
     const [article, setArticle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [hasVoted, setHasVoted] = useState(false);
     const { article_id } = useParams();
 
     useEffect(() => {
@@ -29,6 +30,12 @@ const SingleArticle = () => {
     }, [article_id]);
 
     const handleVote = (increment) => {
+
+        if(hasVoted){
+            return;
+        }
+        setHasVoted(true);
+
         setArticle((currentArticle) => ({
             ...currentArticle, votes: currentArticle.votes +1
         }));
@@ -38,6 +45,7 @@ const SingleArticle = () => {
             setArticle(updateArticle)
         })
         .catch((error) => {
+            setHasVoted(false);
             setArticle((currentArticle) => ({
                 ...currentArticle,
                 votes: currentArticle.votes -1
