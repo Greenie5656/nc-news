@@ -5,8 +5,8 @@ const api = axios.create({
     baseURL: "https://my-nc-news-7qlo.onrender.com/api"
 })
 
-const getArticles = () => {
-    return api.get("/articles").then(({ data }) => {
+const getArticles = (params = {}) => {
+    return api.get("/articles", { params }).then(({ data }) => {
         return data.articles
     })
 }
@@ -41,15 +41,10 @@ const deleteComment = (comment_id) => {
     return api.delete(`/comments/${comment_id}`);
 }
 
-const getSortedArticles = (sort_by, order) => {
-    return api.get(`/articles?sort_by=${sort_by}&order=${order}`)
-    .then(({ data }) => {
-        return data.articles;
-    });
-};
 
 
 
 
 
-export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment, deleteComment, getSortedArticles };
+
+export { getArticles, getArticleById, getArticleComments, updateArticleVotes, postComment, deleteComment };
